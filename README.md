@@ -1,11 +1,20 @@
 # LuminoaLink LP
 
-ローカルで確認するための簡単な手順と、ダミー画像の差し替え方法をまとめたメモです。
+ローカルで確認するための簡単な手順と、GitHub Pages で公開するまでの流れをまとめたメモです。
 
 ## ローカルでの確認方法
 1. このディレクトリを任意の場所に配置します。
 2. ダブルクリックまたはブラウザで `index.html` を開きます。
 3. フォントは Google Fonts を利用しているため、オフラインではシステムフォントにフォールバックします。
+
+## GitHub Pages で公開する手順
+1. GitHub で新規リポジトリを作成し（Public 推奨）、このディレクトリの内容をコミットします。
+2. ターミナルで `git remote add origin https://github.com/<ユーザー名>/<リポジトリ名>.git` を実行し、リモートを登録します。
+3. `git push -u origin main` で `main` ブランチへプッシュします。
+4. リポジトリの `Settings` → `Pages` を開き、"Build and deployment" の `Source` に **GitHub Actions** が選択されていることを確認します（本リポジトリには自動デプロイ用ワークフロー `.github/workflows/deploy.yml` が含まれています）。
+5. `main` ブランチに push されるたびにワークフローが実行され、ビルド完了後に表示される `https://<ユーザー名>.github.io/<リポジトリ名>/` で公開されます。
+
+> **補足**: 既存のリモートを確認したいときは `git remote -v` を実行してください。設定を変更する場合は `git remote set-url origin ...` で更新できます。
 
 ## 画像の差し替え
 - `avatar.jpg` と `works/work1.jpg` 〜 `works/work6.jpg` を任意の画像で置き換えてください。
